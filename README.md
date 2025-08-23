@@ -1,0 +1,59 @@
+# To-Do List Web Application
+
+A simple and elegant To-Do List application built with vanilla JavaScript, HTML, and CSS, using Web Components for a modular and framework-free architecture.
+
+## Features
+
+*   **Add new tasks**: Easily add new tasks to your to-do list.
+*   **Mark tasks as complete**: Mark tasks as complete with a single click.
+*   **Delete tasks**: Remove tasks from your list.
+*   **Persistent Storage**: Your to-do list is saved to your browser's local storage, so your tasks will be there when you come back.
+*   **Component-Based Architecture**: Built with Web Components for a modular and maintainable codebase.
+
+## Technologies Used
+
+*   **HTML5**
+*   **CSS3**
+*   **Vanilla JavaScript (ES6+)**
+*   **Web Components**:
+    *   Custom Elements
+    *   Shadow DOM
+*   **BEM CSS Naming Convention**
+*   **Functional Programming Principles**
+
+## How to Run
+
+To run this application locally, you can use a simple local server. Here are a few options:
+
+1.  **VS Code Live Server**: If you are using VS Code, the "Live Server" extension is a great option. Simply right-click on the `index.html` file and select "Open with Live Server".
+
+2.  **Python's HTTP Server**: If you have Python installed, you can run the following command in the project's root directory:
+    ```bash
+    python -m http.server
+    ```
+
+3.  **Node.js `serve` package**: If you have Node.js installed, you can use the `serve` package:
+    ```bash
+    npx serve
+    ```
+
+Once the server is running, you can access the application in your web browser at the provided local address (usually `http://localhost:8080` or `http://localhost:3000`).
+
+## Project Structure
+
+```
+.
+├── index.html
+├── styles.css
+├── src
+│   ├── app.js
+│   ├── components
+│   │   ├── TodoInput.js
+│   │   ├── TodoList.js
+│   │   └── TodoItem.js
+│   └── services
+│       └── StorageService.js
+├── DEV_JOURNEY.md
+├── GEMINI.md
+└── README.md
+```
