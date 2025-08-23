@@ -8,6 +8,26 @@ const apps = [
         name: 'Calculator App',
         description: 'A simple calculator.',
         url: 'apps/calculator-app/index.html'
+    },
+    {
+        name: 'Weather App',
+        description: 'Get the current weather for any city.',
+        url: 'apps/weather-app/index.html'
+    },
+    {
+        name: 'Drawing App',
+        description: 'A simple drawing application.',
+        url: 'apps/drawing-app/index.html'
+    },
+    {
+        name: 'Data Visualization App',
+        description: 'A simple data visualization using Chart.js.',
+        url: 'apps/data-visualization-app/index.html'
+    },
+    {
+        name: 'JSFiddle Clone',
+        description: 'A live HTML/CSS/JS code editor.',
+        url: 'apps/jsfiddle-clone/index.html'
     }
 ];
 
