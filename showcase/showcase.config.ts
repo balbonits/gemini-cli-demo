@@ -131,27 +131,21 @@ const showcaseConfig: ProjectData = {
   ],
   screenshots: [
     {
-      src:
-  '/images/projects/gemini-cli-demo/01-desktop-home-desktop.webp',
+      src: '/images/projects/gemini-cli-demo/01-desktop-home-desktop.webp',
       alt: 'Gemini CLI Demo showcase homepage',
-      caption: 'Main showcase interface displaying all web 
-  component apps',
+      caption: 'Main showcase interface displaying all web component apps',
       category: 'desktop'
     },
     {
-      src:
-  '/images/projects/gemini-cli-demo/03-feature-demo-feature.webp',
+      src: '/images/projects/gemini-cli-demo/03-feature-demo-feature.webp',
       alt: 'Drawing app demonstration',
-      caption: 'Interactive drawing application built with Web 
-  Components',
+      caption: 'Interactive drawing application built with Web Components',
       category: 'feature'
     },
     {
-      src:
-  '/images/projects/gemini-cli-demo/04-feature-demo-feature.webp',
+      src: '/images/projects/gemini-cli-demo/04-feature-demo-feature.webp',
       alt: 'Todo list app demonstration',
-      caption: 'Functional todo list with local storage 
-  persistence',
+      caption: 'Functional todo list with local storage persistence',
       category: 'feature'
     }
   ],
@@ -178,25 +172,18 @@ const showcaseConfig: ProjectData = {
     }
   ],
   lessons: [
-    'Web Components provide true encapsulation without framework 
-  overhead',
-    'BEM CSS methodology scales well even in component-based 
-  architecture',
-    'Functional programming patterns work effectively with vanilla
-   JavaScript',
-    'Browser native APIs are powerful enough for complex 
-  interactions',
-    'AI can successfully generate working web applications from 
-  specifications'
+    'Web Components provide true encapsulation without framework overhead',
+    'BEM CSS methodology scales well even in component-based architecture',
+    'Functional programming patterns work effectively with vanilla JavaScript',
+    'Browser native APIs are powerful enough for complex interactions',
+    'AI can successfully generate working web applications from specifications'
   ],
   challenges: [
-    'Managing state across isolated Web Components without a 
-  framework',
+    'Managing state across isolated Web Components without a framework',
     'Implementing drag-and-drop functionality in the drawing app',
     'Ensuring consistent styling with Shadow DOM boundaries',
     'Creating a modal system that works with Web Components',
-    'Handling browser compatibility for newer Web Component 
-  features'
+    'Handling browser compatibility for newer Web Component features'
   ],
   futureImprovements: [
     'Add more interactive web component applications',
