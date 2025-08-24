@@ -38,6 +38,9 @@ class TodoList extends HTMLElement {
             todoItem.addEventListener('delete-todo', (e) => {
                 this.dispatchEvent(new CustomEvent('delete-todo', { detail: e.detail }));
             });
+            todoItem.addEventListener('edit-todo', (e) => {
+                this.dispatchEvent(new CustomEvent('edit-todo', { detail: e.detail }));
+            });
         });
     }
 }
