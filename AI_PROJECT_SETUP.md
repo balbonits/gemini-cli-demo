@@ -48,12 +48,15 @@ Create this file structure in **your project repository** (not the portfolio rep
 your-project-repo/
 ├── showcase/
 │   └── showcase.config.ts     # Portfolio showcase configuration
-├── images/ (or docs/images/)
-│   ├── 01-desktop-home.png    # Screenshots from Step 2
-│   ├── 02-mobile-interface.png
-│   └── ...
+│   └── images/                # ⚠️ REQUIRED - Put screenshots here!
+│       ├── 01-desktop-home.png    # Screenshots from Step 2
+│       ├── 02-mobile-interface.png
+│       ├── 03-feature-demo.png
+│       └── 04-feature-demo.png
 └── README.md                  # Your project documentation
 ```
+
+**⚠️ CRITICAL**: The `images` folder MUST be inside `showcase/` folder!
 
 **Why in your repo?**
 - Our build pipeline will fetch this config automatically
@@ -78,9 +81,9 @@ interface ProjectData {
   screenshots?: Screenshot[];
   links: Link[];
   metrics?: Metric[];
-  lessons?: string[];
-  challenges?: string[];
-  futureImprovements?: string[];
+  lessons?: string[];        // ⚠️ POPULATE WITH CONTENT - don't leave empty!
+  challenges?: string[];      // ⚠️ POPULATE WITH CONTENT - don't leave empty!
+  futureImprovements?: string[]; // ⚠️ POPULATE WITH CONTENT - don't leave empty!
 }
 
 const showcaseConfig: ProjectData = {
@@ -424,6 +427,44 @@ interface Metric {
   description: string;
 }
 ```
+
+## ⚠️ **CRITICAL: Populate ALL Fields**
+
+**Even though some fields are marked as optional (`?`) in the TypeScript interface, you MUST populate them with meaningful content:**
+
+### **Required Content for "Optional" Fields:**
+
+1. **`screenshots`** - MUST include at least 3-4 screenshots:
+   - Use local images from `showcase/images/` folder
+   - Don't use placeholder URLs or leave empty
+   - Reference actual processed images
+
+2. **`metrics`** - MUST include 4 metrics:
+   - Quantifiable project statistics
+   - Performance metrics
+   - Code quality indicators
+   - Feature counts
+
+3. **`lessons`** - MUST include 3-5 learnings:
+   - Specific technical insights gained
+   - Problem-solving approaches discovered
+   - Best practices learned
+
+4. **`challenges`** - MUST include 3-5 challenges:
+   - Technical obstacles overcome
+   - Complex problems solved
+   - Performance issues addressed
+
+5. **`futureImprovements`** - MUST include 3-5 improvements:
+   - Planned enhancements
+   - Performance optimizations
+   - Feature additions
+
+**Why "optional" fields must be populated:**
+- They're optional in the TypeScript interface for flexibility
+- But empty fields make the project look incomplete
+- Recruiters expect comprehensive project documentation
+- The portfolio page has UI sections for all these fields
 
 ## ✅ Final Checklist for AI Assistants
 

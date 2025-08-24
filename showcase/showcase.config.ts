@@ -131,23 +131,79 @@ const showcaseConfig: ProjectData = {
   ],
   screenshots: [
     {
-      src: 'https://raw.githubusercontent.com/balbonits/gemini-cli-demo/main/showcase/images/01-desktop-home.png',
-      alt: 'Application homepage on desktop',
-      caption: 'Main interface showing key features',
+      src:
+  '/images/projects/gemini-cli-demo/01-desktop-home-desktop.webp',
+      alt: 'Gemini CLI Demo showcase homepage',
+      caption: 'Main showcase interface displaying all web 
+  component apps',
       category: 'desktop'
     },
     {
-      src: 'https://raw.githubusercontent.com/balbonits/gemini-cli-demo/main/showcase/images/03-feature-demo.png',
-      alt: 'Drawing app screenshot',
-      caption: 'A simple drawing application',
+      src:
+  '/images/projects/gemini-cli-demo/03-feature-demo-feature.webp',
+      alt: 'Drawing app demonstration',
+      caption: 'Interactive drawing application built with Web 
+  Components',
       category: 'feature'
     },
     {
-      src: 'https://raw.githubusercontent.com/balbonits/gemini-cli-demo/main/showcase/images/04-feature-demo.png',
-      alt: 'To-do list app screenshot',
-      caption: 'A simple to-do list application',
+      src:
+  '/images/projects/gemini-cli-demo/04-feature-demo-feature.webp',
+      alt: 'Todo list app demonstration',
+      caption: 'Functional todo list with local storage 
+  persistence',
       category: 'feature'
     }
+  ],
+  metrics: [
+    {
+      label: 'Web Components',
+      value: '3 apps',
+      description: 'Self-contained web component applications'
+    },
+    {
+      label: 'Code Quality',
+      value: '100% Vanilla JS',
+      description: 'No framework dependencies, pure web standards'
+    },
+    {
+      label: 'Performance',
+      value: '<50KB total',
+      description: 'Lightweight bundle size for all apps'
+    },
+    {
+      label: 'Browser Support',
+      value: 'All modern',
+      description: 'Works in Chrome, Firefox, Safari, Edge'
+    }
+  ],
+  lessons: [
+    'Web Components provide true encapsulation without framework 
+  overhead',
+    'BEM CSS methodology scales well even in component-based 
+  architecture',
+    'Functional programming patterns work effectively with vanilla
+   JavaScript',
+    'Browser native APIs are powerful enough for complex 
+  interactions',
+    'AI can successfully generate working web applications from 
+  specifications'
+  ],
+  challenges: [
+    'Managing state across isolated Web Components without a 
+  framework',
+    'Implementing drag-and-drop functionality in the drawing app',
+    'Ensuring consistent styling with Shadow DOM boundaries',
+    'Creating a modal system that works with Web Components',
+    'Handling browser compatibility for newer Web Component 
+  features'
+  ],
+  futureImprovements: [
+    'Add more interactive web component applications',
+    'Implement a weather app with API integration',
+    'Create a shared component library for reuse',
+    'Add unit tests for all components',
+    'Implement PWA features for offline functionality'
   ]
 };
 
