@@ -5,8 +5,11 @@ class DataVisualizationApp extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
                 .chart-container {
-                    width: 500px;
-                    height: 400px;
+                    position: relative;
+                    width: 100%;
+                    max-width: 500px;
+                    height: auto;
+                    max-height: 400px;
                 }
             </style>
             <div class="chart-container">
@@ -35,6 +38,9 @@ class DataVisualizationApp extends HTMLElement {
         new Chart(this.ctx, {
             type: 'line',
             data: data,
+            options: {
+                responsive: true
+            }
         });
     }
 }

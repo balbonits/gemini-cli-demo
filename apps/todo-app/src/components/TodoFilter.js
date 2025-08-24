@@ -21,6 +21,14 @@ class TodoFilter extends HTMLElement {
                     background-color: #007bff;
                     color: white;
                 }
+                @media (max-width: 320px) {
+                    .filters {
+                        flex-direction: column;
+                    }
+                    button {
+                        margin: 0.25rem 0;
+                    }
+                }
             </style>
             <div class="filters">
                 <button id="all" class="active">All</button>

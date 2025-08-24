@@ -5,7 +5,8 @@ class WeatherApp extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
                 .weather-app {
-                    width: 300px;
+                    width: 100%;
+                    max-width: 300px;
                     padding: 1rem;
                     border: 1px solid #ccc;
                     border-radius: 5px;
@@ -13,6 +14,20 @@ class WeatherApp extends HTMLElement {
                 }
                 .weather-info {
                     text-align: center;
+                }
+                @media (max-width: 400px) {
+                    .weather-app {
+                        max-width: 100%;
+                        border-radius: 0;
+                        box-shadow: none;
+                        border: none;
+                    }
+                    h2 {
+                        font-size: 1.2rem;
+                    }
+                    p {
+                        font-size: 1rem;
+                    }
                 }
             </style>
             <div class="weather-app">

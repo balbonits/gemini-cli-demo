@@ -5,7 +5,8 @@ class CalculatorApp extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
                 .calculator {
-                    width: 300px;
+                    width: 100%;
+                    max-width: 300px;
                     border: 1px solid #ccc;
                     border-radius: 5px;
                     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -36,6 +37,21 @@ class CalculatorApp extends HTMLElement {
                 .operator {
                     background-color: #f9a825;
                     color: white;
+                }
+                @media (max-width: 400px) {
+                    .calculator {
+                        max-width: 100%;
+                        border-radius: 0;
+                        box-shadow: none;
+                        border: none;
+                    }
+                    button {
+                        font-size: 1.2rem;
+                        height: 50px;
+                    }
+                    .display {
+                        font-size: 1.5rem;
+                    }
                 }
             </style>
             <div class="calculator">

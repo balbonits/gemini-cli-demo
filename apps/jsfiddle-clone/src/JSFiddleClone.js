@@ -7,7 +7,7 @@ class JSFiddleClone extends HTMLElement {
                 .editor {
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
-                    height: 400px;
+                    height: auto;
                 }
                 textarea {
                     width: 100%;
@@ -16,8 +16,20 @@ class JSFiddleClone extends HTMLElement {
                 }
                 iframe {
                     width: 100%;
-                    height: 400px;
+                    height: auto;
                     border: 1px solid #ccc;
+                }
+                @media (max-width: 600px) {
+                    .editor {
+                        grid-template-columns: 1fr;
+                        height: auto;
+                    }
+                    textarea {
+                        height: 200px;
+                    }
+                    iframe {
+                        height: 300px;
+                    }
                 }
             </style>
             <div class="editor">
