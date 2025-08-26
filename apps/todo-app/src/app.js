@@ -18,6 +18,11 @@ class TodoApp extends HTMLElement {
                     background: none;
                     cursor: pointer;
                 }
+                @media (max-width: 400px) {
+                    #clear-completed {
+                        width: 100%;
+                    }
+                }
             </style>
             <h1>To-Do List</h1>
             <todo-input></todo-input>

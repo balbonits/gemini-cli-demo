@@ -50,6 +50,12 @@ class TodoItem extends HTMLElement {
                 .save-btn {
                     color: green;
                 }
+                @media (max-width: 400px) {
+                    button {
+                        padding: 0.5rem;
+                        margin-left: 0.5rem;
+                    }
+                }
             </style>
             <li class="${this._todo.completed ? 'completed' : ''}">
                 <input type="checkbox" ${this._todo.completed ? 'checked' : ''}>

@@ -22,6 +22,14 @@ class TodoInput extends HTMLElement {
                     border-radius: 4px;
                     cursor: pointer;
                 }
+                @media (max-width: 320px) {
+                    form {
+                        flex-direction: column;
+                    }
+                    button {
+                        margin-top: 0.5rem;
+                    }
+                }
             </style>
             <form>
                 <input type="text" placeholder="Add a new task..." />
