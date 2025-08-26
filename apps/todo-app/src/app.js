@@ -8,6 +8,17 @@ class TodoApp extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
+            <style>
+                #clear-completed {
+                    display: block;
+                    margin: 1rem auto 0;
+                    padding: 0.5rem 1rem;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    background: none;
+                    cursor: pointer;
+                }
+            </style>
             <h1>To-Do List</h1>
             <todo-input></todo-input>
             <todo-filter></todo-filter>

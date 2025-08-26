@@ -8,6 +8,7 @@ class TodoFilter extends HTMLElement {
                     display: flex;
                     justify-content: center;
                     margin-bottom: 1rem;
+                    flex-wrap: wrap;
                 }
                 button {
                     margin: 0 0.5rem;
@@ -21,7 +22,7 @@ class TodoFilter extends HTMLElement {
                     background-color: #007bff;
                     color: white;
                 }
-                @media (max-width: 320px) {
+                @media (max-width: 400px) {
                     .filters {
                         flex-direction: column;
                     }
