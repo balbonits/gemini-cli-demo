@@ -28,6 +28,21 @@ const apps = [
         name: 'JSFiddle Clone',
         description: 'A live HTML/CSS/JS code editor.',
         url: 'apps/jsfiddle-clone/index.html'
+    },
+    {
+        name: 'Mind Mapping App',
+        description: 'A web-based mind mapping application.',
+        url: 'apps/mind-mapping-app/index.html'
+    },
+    {
+        name: 'Markdown Editor',
+        description: 'A web-based markdown editor with a live preview.',
+        url: 'apps/markdown-editor/index.html'
+    },
+    {
+        name: 'Shopping Cart',
+        description: 'A simple shopping cart with drag-and-drop support.',
+        url: 'apps/shopping-cart/index.html'
     }
 ];
 
