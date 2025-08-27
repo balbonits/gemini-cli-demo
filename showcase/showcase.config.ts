@@ -180,7 +180,7 @@ const showcaseConfig: ProjectData = {
   metrics: [
     {
       label: 'Web Components',
-      value: '6 apps',
+      value: '9 apps',
       description: 'Self-contained web component applications'
     },
     {
