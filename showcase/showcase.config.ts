@@ -69,12 +69,12 @@ const showcaseConfig: ProjectData = {
   metadata: {
     title: 'Gemini CLI Demo',
     name: 'gemini-cli-demo',
-    description: 'A showcase of web component-based applications built by Gemini.',
-    detailedDescription: `This project is a showcase of web component-based applications built by Gemini. The showcase is a single-page application that displays a collection of web component apps in a card-based layout. When a card is clicked, the corresponding app is launched in a modal window.
+    description: 'A showcase of web component-based applications, including a mind mapping app, a markdown editor, and a shopping cart.',
+    detailedDescription: `This project is a showcase of web component-based applications. The showcase is a single-page application that displays a collection of web component apps in a card-based layout. When a card is clicked, the corresponding app is launched in a modal window.
 
 ## Key Features
 
-- A collection of web component-based applications.
+- A collection of web component-based applications, including a mind mapping app, a markdown editor, and a shopping cart.
 - A single-page application that displays the apps in a card-based layout.
 - A modal window to launch the apps.
 
@@ -112,9 +112,19 @@ const showcaseConfig: ProjectData = {
       impact: 'Provides a central location to view all the web component apps.'
     },
     {
-      title: 'Web Component Apps',
-      description: 'A collection of self-contained web component apps.',
-      impact: 'Demonstrates the power and flexibility of Web Components.'
+      title: 'Mind Mapping App',
+      description: 'A web-based mind mapping application with panning, zooming, and local storage.',
+      impact: 'Demonstrates the ability to build complex, interactive applications with a variety of features.'
+    },
+    {
+      title: 'Markdown Editor',
+      description: 'A web-based markdown editor with a live preview.',
+      impact: 'Demonstrates the ability to build practical tools and integrate with third-party libraries.'
+    },
+    {
+      title: 'Shopping Cart',
+      description: 'A simple shopping cart with drag-and-drop support.',
+      impact: 'Demonstrates the ability to build e-commerce features and handle user interactions.'
     }
   ],
   links: [
@@ -147,12 +157,30 @@ const showcaseConfig: ProjectData = {
       alt: 'Todo list app demonstration',
       caption: 'Functional todo list with local storage persistence',
       category: 'feature'
+    },
+    {
+      src: '/images/projects/gemini-cli-demo/05-feature-demo-feature.webp',
+      alt: 'Mind mapping app demonstration',
+      caption: 'A web-based mind mapping application',
+      category: 'feature'
+    },
+    {
+      src: '/images/projects/gemini-cli-demo/06-feature-demo-feature.webp',
+      alt: 'Markdown editor demonstration',
+      caption: 'A web-based markdown editor with a live preview',
+      category: 'feature'
+    },
+    {
+      src: '/images/projects/gemini-cli-demo/07-feature-demo-feature.webp',
+      alt: 'Shopping cart demonstration',
+      caption: 'A simple shopping cart with drag-and-drop support',
+      category: 'feature'
     }
   ],
   metrics: [
     {
       label: 'Web Components',
-      value: '3 apps',
+      value: '6 apps',
       description: 'Self-contained web component applications'
     },
     {
@@ -186,9 +214,9 @@ const showcaseConfig: ProjectData = {
     'Handling browser compatibility for newer Web Component features'
   ],
   futureImprovements: [
-    'Add more interactive web component applications',
-    'Implement a weather app with API integration',
-    'Create a shared component library for reuse',
+    'Add real-time collaboration to the mind mapping app',
+    'Add cloud sync to the markdown editor',
+    'Add product variations to the shopping cart',
     'Add unit tests for all components',
     'Implement PWA features for offline functionality'
   ]
