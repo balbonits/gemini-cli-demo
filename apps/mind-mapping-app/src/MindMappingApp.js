@@ -1,5 +1,5 @@
 class Node {
-    constructor(x, y, text = 'New Node') {
+    constructor(x, y, text = 'New Node', shape = 'rectangle') {
         this.x = x;
         this.y = y;
         this.text = text;
@@ -7,11 +7,26 @@ class Node {
         this.height = 50;
         this.color = '#f0f0f0';
         this.fontSize = 16;
+        this.shape = shape;
     }
 
     draw(ctx) {
         ctx.fillStyle = this.color;
-        ctx.fillRect(this.x - this.width / 2, this.y - this.height / 2, this.width, this.height);
+        switch (this.shape) {
+            case 'rectangle':
+                ctx.fillRect(this.x - this.width / 2, this.y - this.height / 2, this.width, this.height);
+                break;
+            case 'circle':
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.width / 2, 0, 2 * Math.PI);
+                ctx.fill();
+                break;
+            case 'ellipse':
+                ctx.beginPath();
+                ctx.ellipse(this.x, this.y, this.width / 2, this.height / 2, 0, 0, 2 * Math.PI);
+                ctx.fill();
+                break;
+        }
         ctx.fillStyle = '#000';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -46,15 +61,69 @@ class MindMappingApp extends HTMLElement {
                     border-radius: 5px;
                     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
                 }
+                .help-button {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    font-size: 1.5rem;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                }
+                .help-modal {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0,0,0,0.5);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .help-modal-content {
+                    background-color: white;
+                    padding: 2rem;
+                    border-radius: 5px;
+                    max-width: 500px;
+                }
+                .close-button {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
             </style>
             <div class="mind-map-container">
                 <div class="controls">
-                    <label for="color">Color:</label>
+                    <label for="color">Node Color:</label>
                     <input type="color" id="color" value="#f0f0f0">
                     <label for="font-size">Font Size:</label>
                     <input type="range" id="font-size" min="10" max="30" value="16">
+                    <button id="add-rect">Add Rectangle</button>
+                    <button id="add-circle">Add Circle</button>
+                    <button id="add-ellipse">Add Ellipse</button>
                 </div>
                 <canvas></canvas>
+            </div>
+            <button class="help-button">?</button>
+            <div class="help-modal" style="display: none;">
+                <div class="help-modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>Mind Mapping App Help</h2>
+                    <p>This is a simple mind mapping application.</p>
+                    <ul>
+                        <li>Double-click on the canvas to create a new node.</li>
+                        <li>Drag nodes to move them around.</li>
+                        <li>Hold Shift and click on two nodes to connect them.</li>
+                        <li>Double-click on a node to edit its text.</li>
+                        <li>Use the color picker and font size slider to style the selected node.</li>
+                        <li>Use the shape buttons to add different shapes.</li>
+                        <li>Right-click and drag to pan the canvas.</li>
+                        <li>Use the mouse wheel to zoom in and out.</li>
+                    </ul>
+                </div>
             </div>
         `;
 
@@ -84,6 +153,30 @@ class MindMappingApp extends HTMLElement {
                 this.draw();
                 this.saveToLocalStorage();
             }
+        });
+
+        this.shadowRoot.querySelector('#add-rect').addEventListener('click', () => {
+            this.createNode(this.canvas.width / 2, this.canvas.height / 2, 'rectangle');
+        });
+
+        this.shadowRoot.querySelector('#add-circle').addEventListener('click', () => {
+            this.createNode(this.canvas.width / 2, this.canvas.height / 2, 'circle');
+        });
+
+        this.shadowRoot.querySelector('#add-ellipse').addEventListener('click', () => {
+            this.createNode(this.canvas.width / 2, this.canvas.height / 2, 'ellipse');
+        });
+
+        this.helpButton = this.shadowRoot.querySelector('.help-button');
+        this.helpModal = this.shadowRoot.querySelector('.help-modal');
+        this.closeButton = this.shadowRoot.querySelector('.close-button');
+
+        this.helpButton.addEventListener('click', () => {
+            this.helpModal.style.display = 'flex';
+        });
+
+        this.closeButton.addEventListener('click', () => {
+            this.helpModal.style.display = 'none';
         });
 
         this.loadFromLocalStorage();
@@ -217,7 +310,7 @@ class MindMappingApp extends HTMLElement {
         const data = JSON.parse(localStorage.getItem('mind-map'));
         if (data) {
             this.nodes = data.nodes.map(nodeData => {
-                const node = new Node(nodeData.x, nodeData.y, nodeData.text);
+                const node = new Node(nodeData.x, nodeData.y, nodeData.text, nodeData.shape);
                 node.width = nodeData.width;
                 node.height = nodeData.height;
                 node.color = nodeData.color;
@@ -232,8 +325,8 @@ class MindMappingApp extends HTMLElement {
         }
     }
 
-    createNode(x, y) {
-        const node = new Node(x, y);
+    createNode(x, y, shape = 'rectangle') {
+        const node = new Node(x, y, 'New Node', shape);
         this.nodes.push(node);
         this.draw();
         this.saveToLocalStorage();

@@ -118,7 +118,6 @@ class TodoItem extends HTMLElement {
         editBtn.style.display = 'block';
         saveBtn.style.display = 'none';
     }
-    }
 }
 
 customElements.define('todo-item', TodoItem);

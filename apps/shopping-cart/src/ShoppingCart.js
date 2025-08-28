@@ -39,6 +39,39 @@ class ShoppingCart extends HTMLElement {
                         width: 100%;
                     }
                 }
+                .help-button {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    font-size: 1.5rem;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                }
+                .help-modal {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0,0,0,0.5);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .help-modal-content {
+                    background-color: white;
+                    padding: 2rem;
+                    border-radius: 5px;
+                    max-width: 500px;
+                }
+                .close-button {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
             </style>
             <div class="shopping-cart-container">
                 <div class="product-list"></div>
@@ -46,6 +79,18 @@ class ShoppingCart extends HTMLElement {
                     <h2>Shopping Cart</h2>
                     <ul class="cart-items"></ul>
                     <p>Total: <span class="total">0</span></p>
+                </div>
+            </div>
+            <button class="help-button">?</button>
+            <div class="help-modal" style="display: none;">
+                <div class="help-modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>Shopping Cart Help</h2>
+                    <p>This is a simple shopping cart application.</p>
+                    <ul>
+                        <li>Drag and drop products from the product list to the shopping cart.</li>
+                        <li>The cart total will update automatically.</li>
+                    </ul>
                 </div>
             </div>
         `;
@@ -70,6 +115,18 @@ class ShoppingCart extends HTMLElement {
             e.preventDefault();
             const productId = e.dataTransfer.getData('text/plain');
             this.addToCart(parseInt(productId));
+        });
+
+        this.helpButton = this.shadowRoot.querySelector('.help-button');
+        this.helpModal = this.shadowRoot.querySelector('.help-modal');
+        this.closeButton = this.shadowRoot.querySelector('.close-button');
+
+        this.helpButton.addEventListener('click', () => {
+            this.helpModal.style.display = 'flex';
+        });
+
+        this.closeButton.addEventListener('click', () => {
+            this.helpModal.style.display = 'none';
         });
     }
 

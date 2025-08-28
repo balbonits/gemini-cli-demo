@@ -1,0 +1,24 @@
+{
+  "name": "gemini-cli-demo",
+  "version": "1.0.0",
+  "description": "A showcase of web component-based applications built by Gemini.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:jest": "jest",
+    "test:playwright": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.28.3",
+    "@babel/preset-env": "^7.28.3",
+    "@playwright/test": "^1.55.0",
+    "babel-jest": "^30.1.1",
+    "jest": "^30.1.1",
+    "jest-canvas-mock": "^2.5.2",
+    "jest-environment-jsdom": "^30.1.1",
+    "playwright": "^1.55.0"
+  }
+}

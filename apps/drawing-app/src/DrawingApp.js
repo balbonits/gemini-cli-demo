@@ -19,6 +19,39 @@ class DrawingApp extends HTMLElement {
                     width: 100%;
                     height: 100%;
                 }
+                .help-button {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    font-size: 1.5rem;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                }
+                .help-modal {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0,0,0,0.5);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .help-modal-content {
+                    background-color: white;
+                    padding: 2rem;
+                    border-radius: 5px;
+                    max-width: 500px;
+                }
+                .close-button {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
             </style>
             <div class="drawing-app">
                 <div class="controls">
@@ -28,6 +61,19 @@ class DrawingApp extends HTMLElement {
                     <input type="range" id="brush-size" min="1" max="20" value="5">
                 </div>
                 <canvas></canvas>
+            </div>
+            <button class="help-button">?</button>
+            <div class="help-modal" style="display: none;">
+                <div class="help-modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>Drawing App Help</h2>
+                    <p>This is a simple drawing application.</p>
+                    <ul>
+                        <li>Use the color picker to select a drawing color.</li>
+                        <li>Use the brush size slider to adjust the brush thickness.</li>
+                        <li>Click and drag on the canvas to draw.</li>
+                    </ul>
+                </div>
             </div>
         `;
 
@@ -42,6 +88,18 @@ class DrawingApp extends HTMLElement {
         this.canvas.addEventListener('mousemove', this.draw.bind(this));
         this.canvas.addEventListener('mouseup', this.stopDrawing.bind(this));
         this.canvas.addEventListener('mouseout', this.stopDrawing.bind(this));
+
+        this.helpButton = this.shadowRoot.querySelector('.help-button');
+        this.helpModal = this.shadowRoot.querySelector('.help-modal');
+        this.closeButton = this.shadowRoot.querySelector('.close-button');
+
+        this.helpButton.addEventListener('click', () => {
+            this.helpModal.style.display = 'flex';
+        });
+
+        this.closeButton.addEventListener('click', () => {
+            this.helpModal.style.display = 'none';
+        });
 
         this.strokes = [];
         this.resizeCanvas();
