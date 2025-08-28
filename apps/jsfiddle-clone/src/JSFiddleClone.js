@@ -4,6 +4,9 @@ class JSFiddleClone extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
             <style>
+                :host {
+                    position: relative;
+                }
                 .editor {
                     display: grid;
                     grid-template-columns: repeat(3, 1fr);
@@ -90,7 +93,6 @@ class JSFiddleClone extends HTMLElement {
                 <textarea class="js" placeholder="JavaScript"></textarea>
             </div>
             <iframe class="output"></iframe>
-            <button class="help-button">?</button>
             <div class="help-modal" style="display: none;">
                 <div class="help-modal-content">
                     <span class="close-button">&times;</span>
@@ -103,6 +105,7 @@ class JSFiddleClone extends HTMLElement {
                     </ul>
                 </div>
             </div>
+            <button class="help-button">?</button>
         `;
 
         this.htmlInput = this.shadowRoot.querySelector('.html');

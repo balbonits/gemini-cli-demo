@@ -41,6 +41,9 @@ class MindMappingApp extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
             <style>
+                :host {
+                    position: relative;
+                }
                 .mind-map-container {
                     width: 100%;
                     height: 100%;
@@ -126,7 +129,6 @@ class MindMappingApp extends HTMLElement {
                 </div>
                 <canvas></canvas>
             </div>
-            <button class="help-button">?</button>
             <div class="help-modal" style="display: none;">
                 <div class="help-modal-content">
                     <span class="close-button">&times;</span>
@@ -145,6 +147,7 @@ class MindMappingApp extends HTMLElement {
                     </ul>
                 </div>
             </div>
+            <button class="help-button">?</button>
         `;
 
         this.canvas = this.shadowRoot.querySelector('canvas');

@@ -4,6 +4,9 @@ class CalculatorApp extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
             <style>
+                :host {
+                    position: relative;
+                }
                 .calculator {
                     width: 100%;
                     max-width: 300px;
@@ -130,7 +133,6 @@ class CalculatorApp extends HTMLElement {
                     <button class="equals">=</button>
                 </div>
             </div>
-            <button class="help-button">?</button>
             <div class="help-modal" style="display: none;">
                 <div class="help-modal-content">
                     <span class="close-button">&times;</span>
@@ -145,6 +147,7 @@ class CalculatorApp extends HTMLElement {
                     </ul>
                 </div>
             </div>
+            <button class="help-button">?</button>
         `;
 
         this.display = this.shadowRoot.querySelector('.display');

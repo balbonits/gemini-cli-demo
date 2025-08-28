@@ -4,6 +4,9 @@ class DrawingApp extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
             <style>
+                :host {
+                    position: relative;
+                }
                 .drawing-app {
                     border: 1px solid #ccc;
                     width: 100%;
@@ -62,14 +65,22 @@ class DrawingApp extends HTMLElement {
                     font-size: 1.5rem;
                     cursor: pointer;
                 }
-                .fullscreen-button {
+                .help-button {
                     position: absolute;
-                    top: 10px;
-                    left: 10px;
-                    font-size: 1.5rem;
-                    background: none;
+                    bottom: 10px;
+                    right: 10px;
+                    font-size: 1.2rem;
+                    background-color: #007bff;
+                    color: white;
                     border: none;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     cursor: pointer;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
                 }
             </style>
             <div class="drawing-app">
@@ -81,7 +92,6 @@ class DrawingApp extends HTMLElement {
                 </div>
                 <canvas></canvas>
             </div>
-            <button class="help-button">?</button>
             <div class="help-modal" style="display: none;">
                 <div class="help-modal-content">
                     <span class="close-button">&times;</span>
@@ -95,6 +105,7 @@ class DrawingApp extends HTMLElement {
                     </ul>
                 </div>
             </div>
+            <button class="help-button">?</button>
         `;
 
         this.canvas = this.shadowRoot.querySelector('canvas');

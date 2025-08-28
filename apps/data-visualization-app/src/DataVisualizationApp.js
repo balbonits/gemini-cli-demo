@@ -4,6 +4,9 @@ class DataVisualizationApp extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
             <style>
+                :host {
+                    position: relative;
+                }
                 .chart-container {
                     position: relative;
                     width: 100%;
@@ -67,7 +70,6 @@ class DataVisualizationApp extends HTMLElement {
             <div class="chart-container">
                 <canvas></canvas>
             </div>
-            <button class="help-button">?</button>
             <div class="help-modal" style="display: none;">
                 <div class="help-modal-content">
                     <span class="close-button">&times;</span>
@@ -77,6 +79,7 @@ class DataVisualizationApp extends HTMLElement {
                     <p>The chart data is hardcoded in the component.</p>
                 </div>
             </div>
+            <button class="help-button">?</button>
         `;
 
         this.canvas = this.shadowRoot.querySelector('canvas');

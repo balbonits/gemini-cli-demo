@@ -4,6 +4,9 @@ class WeatherApp extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.innerHTML = `
             <style>
+                :host {
+                    position: relative;
+                }
                 .weather-app {
                     width: 100%;
                     max-width: 300px;
@@ -31,12 +34,20 @@ class WeatherApp extends HTMLElement {
                 }
                 .help-button {
                     position: absolute;
-                    top: 10px;
+                    bottom: 10px;
                     right: 10px;
-                    font-size: 1.5rem;
-                    background: none;
+                    font-size: 1.2rem;
+                    background-color: #007bff;
+                    color: white;
                     border: none;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     cursor: pointer;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
                 }
                 .help-modal {
                     position: fixed;
@@ -68,10 +79,10 @@ class WeatherApp extends HTMLElement {
                 <button>Get Weather</button>
                 <div class="weather-info"></div>
             </div>
-            <button class="help-button">?</button>
             <div class="help-modal" style="display: none;">
                 <div class="help-modal-content">
                     <span class="close-button">&times;</span>
+                    <button class="fullscreen-button">&#x26F6;</button>
                     <h2>Weather App Help</h2>
                     <p>This app fetches weather data for a given city.</p>
                     <ul>
@@ -80,6 +91,7 @@ class WeatherApp extends HTMLElement {
                     </ul>
                 </div>
             </div>
+            <button class="help-button">?</button>
         `;
 
         this.input = this.shadowRoot.querySelector('input');
@@ -98,6 +110,22 @@ class WeatherApp extends HTMLElement {
 
         this.closeButton.addEventListener('click', () => {
             this.helpModal.style.display = 'none';
+        });
+
+        this.fullscreenButton = this.shadowRoot.querySelector('.fullscreen-button');
+        this.fullscreenButton.addEventListener('click', () => {
+            const iframe = window.frameElement;
+            if (iframe) {
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.mozRequestFullScreen) { /* Firefox */
+                    iframe.mozRequestFullScreen();
+                } else if (iframe.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { /* IE/Edge */
+                    iframe.msRequestFullscreen();
+                }
+            }
         });
     }
 
