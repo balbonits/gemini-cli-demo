@@ -89,6 +89,7 @@ class DrawingApp extends HTMLElement {
                     <input type="color" id="color" value="#000000">
                     <label for="brush-size">Brush Size:</label>
                     <input type="range" id="brush-size" min="1" max="20" value="5">
+                    <button id="reset-app">Reset</button>
                 </div>
                 <canvas></canvas>
             </div>
@@ -112,6 +113,7 @@ class DrawingApp extends HTMLElement {
         this.ctx = this.canvas.getContext('2d');
         this.colorInput = this.shadowRoot.querySelector('#color');
         this.brushSizeInput = this.shadowRoot.querySelector('#brush-size');
+        this.resetButton = this.shadowRoot.querySelector('#reset-app');
 
         this.isDrawing = false;
 
@@ -119,6 +121,7 @@ class DrawingApp extends HTMLElement {
         this.canvas.addEventListener('mousemove', this.draw.bind(this));
         this.canvas.addEventListener('mouseup', this.stopDrawing.bind(this));
         this.canvas.addEventListener('mouseout', this.stopDrawing.bind(this));
+        this.resetButton.addEventListener('click', this.resetApp.bind(this));
 
         this.helpButton = this.shadowRoot.querySelector('.help-button');
         this.helpModal = this.shadowRoot.querySelector('.help-modal');
@@ -193,7 +196,7 @@ class DrawingApp extends HTMLElement {
         const currentStroke = this.strokes[this.strokes.length - 1];
         currentStroke.points.push({ x: e.offsetX, y: e.offsetY });
 
-        this.ctx.lineWidth = currentStroke.brushSize;
+        this.ctx.lineWidth = Number(currentStroke.brushSize);
         this.ctx.lineCap = 'round';
         this.ctx.strokeStyle = currentStroke.color;
 
@@ -206,6 +209,11 @@ class DrawingApp extends HTMLElement {
     stopDrawing() {
         this.isDrawing = false;
         this.ctx.beginPath();
+    }
+
+    resetApp() {
+        this.strokes = [];
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
 

@@ -1,4 +1,5 @@
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
+window.marked = marked;
 
 class MarkdownEditor extends HTMLElement {
     constructor() {
@@ -99,6 +100,7 @@ class MarkdownEditor extends HTMLElement {
                     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
                 }
             </style>
+            <button id="reset-app">Reset</button>
             <div class="editor-container">
                 <textarea class="markdown-input"></textarea>
                 <div class="preview"></div>
@@ -120,10 +122,13 @@ class MarkdownEditor extends HTMLElement {
 
         this.markdownInput = this.shadowRoot.querySelector('.markdown-input');
         this.preview = this.shadowRoot.querySelector('.preview');
+        this.resetButton = this.shadowRoot.querySelector('#reset-app');
 
         this.markdownInput.addEventListener('input', () => {
             this.updatePreview();
         });
+
+        this.resetButton.addEventListener('click', this.resetApp.bind(this));
 
         this.helpButton = this.shadowRoot.querySelector('.help-button');
         this.helpModal = this.shadowRoot.querySelector('.help-modal');
@@ -156,8 +161,16 @@ class MarkdownEditor extends HTMLElement {
         this.updatePreview();
     }
 
+    connectedCallback() {
+    }
+
     updatePreview() {
         this.preview.innerHTML = marked(this.markdownInput.value);
+    }
+
+    resetApp() {
+        this.markdownInput.value = '';
+        this.updatePreview();
     }
 }
 

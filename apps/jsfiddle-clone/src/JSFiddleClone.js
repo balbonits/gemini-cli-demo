@@ -92,6 +92,7 @@ class JSFiddleClone extends HTMLElement {
                 <textarea class="css" placeholder="CSS"></textarea>
                 <textarea class="js" placeholder="JavaScript"></textarea>
             </div>
+            <button id="reset-app">Reset</button>
             <iframe class="output"></iframe>
             <div class="help-modal" style="display: none;">
                 <div class="help-modal-content">
@@ -112,10 +113,12 @@ class JSFiddleClone extends HTMLElement {
         this.cssInput = this.shadowRoot.querySelector('.css');
         this.jsInput = this.shadowRoot.querySelector('.js');
         this.output = this.shadowRoot.querySelector('.output');
+        this.resetButton = this.shadowRoot.querySelector('#reset-app');
 
         this.htmlInput.addEventListener('input', this.updateOutput.bind(this));
         this.cssInput.addEventListener('input', this.updateOutput.bind(this));
         this.jsInput.addEventListener('input', this.updateOutput.bind(this));
+        this.resetButton.addEventListener('click', this.resetApp.bind(this));
 
         this.helpButton = this.shadowRoot.querySelector('.help-button');
         this.helpModal = this.shadowRoot.querySelector('.help-modal');
@@ -159,6 +162,13 @@ class JSFiddleClone extends HTMLElement {
             </html>
         `;
         this.output.srcdoc = source;
+    }
+
+    resetApp() {
+        this.htmlInput.value = '';
+        this.cssInput.value = '';
+        this.jsInput.value = '';
+        this.updateOutput();
     }
 }
 

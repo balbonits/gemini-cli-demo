@@ -109,6 +109,7 @@ class ShoppingCart extends HTMLElement {
                     <h2>Shopping Cart</h2>
                     <ul class="cart-items"></ul>
                     <p>Total: <span class="total">0</span></p>
+                    <button id="reset-app">Reset</button>
                 </div>
             </div>
             <div class="help-modal" style="display: none;">
@@ -147,6 +148,9 @@ class ShoppingCart extends HTMLElement {
             const productId = e.dataTransfer.getData('text/plain');
             this.addToCart(parseInt(productId));
         });
+
+        this.resetButton = this.shadowRoot.querySelector('#reset-app');
+        this.resetButton.addEventListener('click', this.resetApp.bind(this));
 
         this.helpButton = this.shadowRoot.querySelector('.help-button');
         this.helpModal = this.shadowRoot.querySelector('.help-modal');
@@ -209,6 +213,11 @@ class ShoppingCart extends HTMLElement {
             this.cart.push(product);
             this.renderCart();
         }
+    }
+
+    resetApp() {
+        this.cart = [];
+        this.renderCart();
     }
 }
 

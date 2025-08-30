@@ -77,6 +77,7 @@ class WeatherApp extends HTMLElement {
             <div class="weather-app">
                 <input type="text" placeholder="Enter a city" />
                 <button>Get Weather</button>
+                <button id="reset-app">Reset</button>
                 <div class="weather-info"></div>
             </div>
             <div class="help-modal" style="display: none;">
@@ -96,6 +97,7 @@ class WeatherApp extends HTMLElement {
 
         this.input = this.shadowRoot.querySelector('input');
         this.button = this.shadowRoot.querySelector('button');
+        this.resetButton = this.shadowRoot.querySelector('#reset-app');
         this.weatherInfo = this.shadowRoot.querySelector('.weather-info');
 
         this.helpButton = this.shadowRoot.querySelector('.help-button');
@@ -103,6 +105,7 @@ class WeatherApp extends HTMLElement {
         this.closeButton = this.shadowRoot.querySelector('.close-button');
 
         this.button.addEventListener('click', this.getWeather.bind(this));
+        this.resetButton.addEventListener('click', this.resetApp.bind(this));
 
         this.helpButton.addEventListener('click', () => {
             this.helpModal.style.display = 'flex';
@@ -156,6 +159,11 @@ class WeatherApp extends HTMLElement {
             this.weatherInfo.textContent = 'Could not fetch weather data.';
             console.error(error);
         }
+    }
+
+    resetApp() {
+        this.input.value = '';
+        this.weatherInfo.innerHTML = '';
     }
 
     getWeatherDescription(code) {

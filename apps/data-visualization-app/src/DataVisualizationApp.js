@@ -1,3 +1,5 @@
+import { Chart } from 'chart.js';
+
 class DataVisualizationApp extends HTMLElement {
     constructor() {
         super();
@@ -70,6 +72,7 @@ class DataVisualizationApp extends HTMLElement {
             <div class="chart-container">
                 <canvas></canvas>
             </div>
+            <button id="reset-app">Reset</button>
             <div class="help-modal" style="display: none;">
                 <div class="help-modal-content">
                     <span class="close-button">&times;</span>
@@ -84,6 +87,7 @@ class DataVisualizationApp extends HTMLElement {
 
         this.canvas = this.shadowRoot.querySelector('canvas');
         this.ctx = this.canvas.getContext('2d');
+        this.resetButton = this.shadowRoot.querySelector('#reset-app');
 
         this.helpButton = this.shadowRoot.querySelector('.help-button');
         this.helpModal = this.shadowRoot.querySelector('.help-modal');
@@ -113,6 +117,15 @@ class DataVisualizationApp extends HTMLElement {
             }
         });
 
+        this.resetButton.addEventListener('click', this.resetApp.bind(this));
+
+        this.renderChart();
+    }
+
+    resetApp() {
+        if (this.chart) {
+            this.chart.destroy();
+        }
         this.renderChart();
     }
 
@@ -128,7 +141,10 @@ class DataVisualizationApp extends HTMLElement {
             }]
         };
 
-        new Chart(this.ctx, {
+        if (this.chart) {
+            this.chart.destroy();
+        }
+        this.chart = new Chart(this.ctx, {
             type: 'line',
             data: data,
             options: {

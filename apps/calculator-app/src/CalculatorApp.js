@@ -112,7 +112,7 @@ class CalculatorApp extends HTMLElement {
             <div class="calculator">
                 <div class="display">0</div>
                 <div class="buttons">
-                    <button class="clear">C</button>
+                    <button class="clear" id="reset-app">AC</button>
                     <button class="sign">+/</button>
                     <button class="percent">%</button>
                     <button class="operator divide">/</button>

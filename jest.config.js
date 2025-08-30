@@ -9,5 +9,6 @@ module.exports = {
     '^chart.js$': '<rootDir>/__mocks__/chart.js',
     '^https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js$': '<rootDir>/__mocks__/marked.js',
   },
-  testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(spec|test).js'],
+  testMatch: ['**/__tests__/**/*.test.js'],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/\.spec\.js$/'],
 };

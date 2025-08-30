@@ -25,7 +25,7 @@ class TodoList extends HTMLElement {
                 }
             </style>
             <ul>
-                ${this._todos.map(todo => `<todo-item></todo-item>`).join('')}
+                ${this._todos.map(() => `<todo-item></todo-item>`).join('')}
             </ul>
         `;
 

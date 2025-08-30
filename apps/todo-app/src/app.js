@@ -12,7 +12,7 @@ class TodoApp extends HTMLElement {
                 :host {
                     position: relative;
                 }
-                #clear-completed {
+                #reset-app {
                     display: block;
                     margin: 1rem auto 0;
                     padding: 0.5rem 1rem;
@@ -22,27 +22,11 @@ class TodoApp extends HTMLElement {
                     cursor: pointer;
                 }
                 @media (max-width: 400px) {
-                    #clear-completed {
+                    #reset-app {
                         width: 100%;
                     }
                 }
-                .help-button {
-                    position: absolute;
-                    bottom: 10px;
-                    right: 10px;
-                    font-size: 1.2rem;
-                    background-color: #007bff;
-                    color: white;
-                    border: none;
-                    border-radius: 50%;
-                    width: 30px;
-                    height: 30px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
-                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-                }
+                
                 .help-modal {
                     position: fixed;
                     top: 0;
@@ -83,7 +67,7 @@ class TodoApp extends HTMLElement {
             <todo-input></todo-input>
             <todo-filter></todo-filter>
             <todo-list></todo-list>
-            <button id="clear-completed">Clear Completed</button>
+            <button id="reset-app">Reset</button>
             <div class="help-modal" style="display: none;">
                 <div class="help-modal-content">
                     <span class="close-button">&times;</span>
@@ -104,11 +88,12 @@ class TodoApp extends HTMLElement {
         `;
 
         this._todos = StorageService.loadTodos();
-        this._filter = 'all';
+        this.FILTER_ALL = 'all';
+        this._filter = this.FILTER_ALL;
         this._todoInput = this.shadowRoot.querySelector('todo-input');
         this._todoList = this.shadowRoot.querySelector('todo-list');
         this._todoFilter = this.shadowRoot.querySelector('todo-filter');
-        this._clearCompletedButton = this.shadowRoot.querySelector('#clear-completed');
+        this._resetButton = this.shadowRoot.querySelector('#reset-app');
         this.helpButton = this.shadowRoot.querySelector('.help-button');
         this.helpModal = this.shadowRoot.querySelector('.help-modal');
         this.closeButton = this.shadowRoot.querySelector('.close-button');
@@ -133,17 +118,13 @@ class TodoApp extends HTMLElement {
             this.filterTodos(e.detail);
         });
 
-        this._clearCompletedButton.addEventListener('click', () => {
-            this.clearCompleted();
+        this._resetButton.addEventListener('click', () => {
+            this.resetApp();
         });
 
-        this.helpButton.addEventListener('click', () => {
-            this.helpModal.style.display = 'flex';
-        });
+        this.helpButton.addEventListener('click', this.openHelpModal.bind(this));
 
-        this.closeButton.addEventListener('click', () => {
-            this.helpModal.style.display = 'none';
-        });
+        this.closeButton.addEventListener('click', this.closeHelpModal.bind(this));
 
         this.fullscreenButton = this.shadowRoot.querySelector('.fullscreen-button');
         this.fullscreenButton.addEventListener('click', () => {
@@ -162,6 +143,14 @@ class TodoApp extends HTMLElement {
         });
 
         this.renderTodoList();
+    }
+
+    openHelpModal() {
+        this.helpModal.style.display = 'flex';
+    }
+
+    closeHelpModal() {
+        this.helpModal.style.display = 'none';
     }
 
     addTodo(text) {
@@ -189,8 +178,8 @@ class TodoApp extends HTMLElement {
         this.renderTodoList();
     }
 
-    clearCompleted() {
-        this._todos = this._todos.filter(todo => !todo.completed);
+    resetApp() {
+        this._todos = [];
         this.saveAndRender();
     }
 
